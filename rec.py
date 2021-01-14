@@ -55,9 +55,14 @@ def rec(name, record):
             print(status, file=sys.stderr)
         q.put(indata.copy())
     
+    take = 1
+    wav_file = path / "{}_{}.wav".format(name, take)
+    while wav_file.is_file():
+        take += 1
+        wav_file = path / "{}_{}.wav".format(name, take)
     print("Recording", name)
     # Make sure the file is opened before recording anything:
-    with sf.SoundFile(path / (name + ".wav"), mode='w', samplerate=fs, channels=CHANNEL, subtype=None) as file:
+    with sf.SoundFile(wav_file, mode='w', samplerate=fs, channels=CHANNEL, subtype=None) as file:
         with sd.InputStream(samplerate=fs, device=in_device, channels=CHANNEL, callback=callback):
             while record.value:
                 file.write(q.get())
