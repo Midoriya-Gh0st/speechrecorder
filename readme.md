@@ -5,17 +5,13 @@
 in Python which should be system-agnostic. Tested using Python 3.7, but 3.6+ should work
 well.
 
-This code is set up to record Arctic A, but it is easy to adopt it for other texts.
+This code is set up to record scripts in Festival utts.data format.
 
-Current version only saves one take. If you redo a part, it will overwrite the previous
-take.
-
-This code is not the prettiest, I just wanted a quick tool that works. I do think all the
-bits around it (like saving multiple takes or loading different utterances) should be very
-easy to add if you know some python. Currently this tool spins up a separate process that
-handles audio recording/playback. I tried using a simple thread for this, but portaudio
-would not find the ASIO driver for my audio interface then. If anyone can figure out how
-to make this work with threads, that would be better (no while True: loop needed).
+This code is not the prettiest, I just wanted a quick tool that works. Currently this tool
+spins up a separate process that handles audio recording/playback. I tried using a simple
+thread for this, but portaudio would not find the ASIO driver for my audio interface then.
+If anyone can figure out how to make this work with threads, that would be better (no while
+True: loop needed).
 
 ## Prerequisites
 Python packages:
@@ -35,32 +31,36 @@ import sounddevice as sd
 print(sd.query_devices())
 ``` 
 
-From the list, note the indices of the devices you want to use for playback/recording and fill their numbers into the following lines of code in `rec.py`:
+From the list, note the indices of the devices you want to use for playback/recording and
+fill their numbers into the following lines of code in `rec.py`:
 ```python
 in_device = 10
 out_device = 3
 CHANNEL = 1
 ``` 
-If you're using an audio interface with many input channels, and your microphone is plugged into input 8, put `CHANNEL=8`.
+If you're using an audio interface with many input channels, and your microphone is
+plugged into input 8, put `in_device=8`. Set `CHANNEL` to record in mono (default) or
+stereo (`CHANNEL = [1|2]` respectively).
 
-The default will record in 16kHz as this is the sampling rate used for building the voice
-according to [the unit selection
-assignment](http://www.speech.zone/exercises/build-a-unit-selection-voice/?style=onepage).
+The default will record in 44.1 kHz.
 If you need higher/lower quality recordings, change `fs` to the required sampling
-rate. Default recording setting is 32bit float - sounddevice also allows for 16/24bit
-recordings. Look into the documentation to change it if necessary.
+rate. Default recording setting is 16 bit PCM for WAV files. Check
+`soundfile.available_subtypes('WAV')` for alternatives and set `subtype` accordingly in
+the `sf.SoundFile` object used in `rec()` if needed.
 
 ## How to use
 Run `rec.py` with `python rec.py`.
 
 * Press `up` and `down` to navigate sentences
-* Press `space` to record
+* Press `space` to start/stop recording. Multiple recordings will produce multiple takes
 * Press `down` while recording to immediately record the next utterance (without stopping
-  in between)
-* When not recording, press `p` to listen to the recorded audio
+  in between). 
+  * *Warning:* This may lead to bad utterance segmentations (possibly due to timeouts
+  used in `multiprocessing.Process.join()`?)
+* When not recording, press `p` to listen to the recorded audio (plays the latest take)
 * Press `q` to quit.
 
-To use a text other than Arctic A, change `labels` and `utts` to be (same-length) python
-lists containing the identifier (used for saved file names) and utterances.
-
+The tool should parse any script file matching the format of the provided `utts.data`.
+For other scripts, provide same-length lists of utterance labels (used for saved file
+names) and prompts in the variables `labels` and `utts` respectively.
 
