@@ -37,10 +37,16 @@ def audio_process(labels, play, record, i):
 
 
 def playback(name):
-    file = path / (name + ".wav")
-    print("Playback", file)
-    if file.is_file():
-        data, fs = sf.read(path / (name + ".wav"), dtype='float32')
+    take = 1
+    wav_file = path / "{}_{}.wav".format(name, take)
+    while wav_file.is_file():
+        if not (path / "{}_{}.wav".format(name, take + 1)).is_file():
+            break
+        take += 1
+        wav_file = path / "{}_{}.wav".format(name, take)
+    print("Playback", wav_file)
+    if wav_file.is_file():
+        data, fs = sf.read(wav_file)
     else:
         data, fs = sf.read(path / "not_found.wav")
     sd.play(data, fs)
