@@ -84,10 +84,10 @@ if __name__ == "__main__":
     
     def key(event):
         global i, play
-        code = event.keycode
+        code = event.keysym
         i_mp.value = i
         
-        if code == 32:
+        if code == 'space':
             # Record/stop recording - space
             if record.value == 0:
                 record.value = 1
@@ -95,14 +95,14 @@ if __name__ == "__main__":
                 record.value = 0
             l.config(fg="green" if not record.value else "red")
             p.join(0)
-        elif code == 80:
+        elif code == 'p':
             # Play/pause - p
             play.value = 1
             p.join(0)
             set_colour = lambda c: l.config(fg=c)
             set_colour("yellow")
             frame.after(1000, lambda: set_colour("green"))
-        elif code == 38:
+        elif code == 'Up':
             # up
             if i <= 0:
                 i = -1
@@ -112,7 +112,7 @@ if __name__ == "__main__":
                 text.set("{}".format(utts[i]))
                 label.set("{}".format(labels[i]))
         
-        elif code == 40:
+        elif code == 'Down':
             # down
             if i == len(utts) - 1:
                 i = len(utts)
@@ -131,7 +131,7 @@ if __name__ == "__main__":
                     p.join(0.01)
                     record.value = 1
                     p.join(0)
-        elif code == 81:
+        elif code == 'q':
             # quit - q
             p.terminate()
             root.destroy()
