@@ -11,10 +11,10 @@ import soundfile as sf
 path = Path("recordings")
 path.mkdir(exist_ok=True)
 
-with open("cc.data", "r") as f:
+with open("utts.data", "r") as f:
     arctic = f.readlines()
-labels = list(map(lambda x: x[2:9], arctic))
-utts = list(map(lambda x: x[11:-3], arctic))
+labels = list(map(lambda x: x[9:14], arctic))
+utts = list(map(lambda x: x[16:-4], arctic))
 
 print(sd.query_devices())
 # Fill in the device you want to use for input (and set the channel you want to record over, in my case device 10 is an
