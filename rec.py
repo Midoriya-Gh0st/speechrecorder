@@ -1,6 +1,7 @@
 import queue
 import sys
 import tkinter as tk
+from collections import defaultdict
 from multiprocessing import Process, Value
 from pathlib import Path
 from time import sleep
@@ -14,6 +15,10 @@ path.mkdir(exist_ok=True)
 with open("utts.data") as f:
     script = [i.strip('( )"\n').split(' "') for i in f.readlines()]
 labels, utts = zip(*script)
+takes = defaultdict(int)
+for i in labels:
+    while (path / "{}_{}.wav".format(i, takes[i] + 1)).is_file():
+        takes[i] += 1
 
 print(sd.query_devices())
 # Fill in the device you want to use for input (and set the channel you want to record over, in my case device 10 is an
@@ -37,13 +42,7 @@ def audio_process(labels, play, record, i):
 
 
 def playback(name):
-    take = 1
-    wav_file = path / "{}_{}.wav".format(name, take)
-    while wav_file.is_file():
-        if not (path / "{}_{}.wav".format(name, take + 1)).is_file():
-            break
-        take += 1
-        wav_file = path / "{}_{}.wav".format(name, take)
+    wav_file = path / "{}_{}.wav".format(name, takes[name])
     print("Playback", wav_file)
     if wav_file.is_file():
         data, fs = sf.read(wav_file)
@@ -61,11 +60,8 @@ def rec(name, record):
             print(status, file=sys.stderr)
         q.put(indata.copy())
     
-    take = 1
-    wav_file = path / "{}_{}.wav".format(name, take)
-    while wav_file.is_file():
-        take += 1
-        wav_file = path / "{}_{}.wav".format(name, take)
+    takes[name] += 1
+    wav_file = path / "{}_{}.wav".format(name, takes[name])
     print("Recording", wav_file)
     # Make sure the file is opened before recording anything:
     with sf.SoundFile(wav_file, mode='w', samplerate=fs, channels=CHANNEL, subtype='PCM_16') as file:
