@@ -46,9 +46,9 @@ def playback(name):
     wav_file = path / "{}_{}.wav".format(name, takes[name])
     print("Playback", wav_file)
     if wav_file.is_file():
-        data, fs = sf.read(wav_file)
+        data, fs = sf.read(str(wav_file))
     else:
-        data, fs = sf.read(path / "not_found.wav")
+        data, fs = sf.read(str(path / "not_found.wav"))
     sd.play(data, fs)
 
 
@@ -62,7 +62,7 @@ def rec(name, record):
         q.put(indata.copy())
 
     takes[name] += 1
-    wav_file = path / "{}_{}.wav".format(name, takes[name])
+    wav_file = str(path / "{}_{}.wav".format(name, takes[name]))
     print("Recording", wav_file)
     # Make sure the file is opened before recording anything:
     with sf.SoundFile(wav_file, mode='w', samplerate=fs, channels=CHANNEL,
