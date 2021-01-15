@@ -16,14 +16,12 @@ True: loop needed).
 ## Prerequisites
 Python packages:
 
-* [PySoundFile](https://pysoundfile.readthedocs.io/en/latest/)
-* [python-sounddevice](https://python-sounddevice.readthedocs.io/en/0.3.15/installation.html)
-    * I recommend using [this](https://www.lfd.uci.edu/~gohlke/pythonlibs/#sounddevice)
-      version (e.g. `pip install sounddevice‑0.3.15‑cp37‑cp37m‑win_amd64.whl`) as it
-      includes a working version of PyAudio
+* [PySoundFile](https://pysoundfile.readthedocs.io/en/latest/#installation)
+* [python-sounddevice](https://python-sounddevice.readthedocs.io/en/latest/installation.html) >= 0.3.15
+* [numpy](https://numpy.org/install/)
+* [CFFI](https://cffi.readthedocs.io/en/latest/installation.html)
 
-You need to configure the correct Input and Output devices by hand for this tool to work:
-
+You need to configure the correct Input and Output devices by hand for this tool to work.
 Run the following commands to list available audio devices in a Python interpreter:
 
 ```python
@@ -31,16 +29,14 @@ import sounddevice as sd
 print(sd.query_devices())
 ``` 
 
-From the list, note the indices of the devices you want to use for playback/recording and
-fill their numbers into the following lines of code in `rec.py`:
+The required `in_device` index is marked by `>` and `out_device` by `<`.
+Modify the following lines in `rec.py` with the appropriate device indices, and
+set `CHANNEL` to record in mono (default) or stereo (`CHANNEL = [1|2]` respectively):
 ```python
 in_device = 10
 out_device = 3
 CHANNEL = 1
 ``` 
-If you're using an audio interface with many input channels, and your microphone is
-plugged into input 8, put `in_device=8`. Set `CHANNEL` to record in mono (default) or
-stereo (`CHANNEL = [1|2]` respectively).
 
 The default will record in 44.1 kHz.
 If you need higher/lower quality recordings, change `fs` to the required sampling
