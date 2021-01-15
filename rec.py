@@ -21,10 +21,9 @@ for i in labels:
         takes[i] += 1
 
 print(sd.query_devices())
-# Fill in the device you want to use for input (and set the channel you want to record over, in my case device 10 is an
-# audio interface, and the microphone is plugged into the first input (channel 1)) and output (used for playback)
-in_device = 8
-out_device = 3
+# Fill in the device you want to use for input (and set the channel you want to
+# record over, in my case device 10 is an audio interface, and the microphone
+# is plugged into the first input (channel 1)) and output (used for playback)
 CHANNEL = 1
 fs = 44100
 sd.default.device = [in_device, out_device]
@@ -53,19 +52,21 @@ def playback(name):
 
 def rec(name, record):
     q = queue.Queue()
-    
+
     def callback(indata, frames, time, status):
         """This is called (from a separate thread) for each audio block."""
         if status:
             print(status, file=sys.stderr)
         q.put(indata.copy())
-    
+
     takes[name] += 1
     wav_file = path / "{}_{}.wav".format(name, takes[name])
     print("Recording", wav_file)
     # Make sure the file is opened before recording anything:
-    with sf.SoundFile(wav_file, mode='w', samplerate=fs, channels=CHANNEL, subtype='PCM_16') as file:
-        with sd.InputStream(samplerate=fs, device=in_device, channels=CHANNEL, callback=callback):
+    with sf.SoundFile(wav_file, mode='w', samplerate=fs, channels=CHANNEL,
+                      subtype='PCM_16') as file:
+        with sd.InputStream(samplerate=fs, device=in_device, channels=CHANNEL,
+                            callback=callback):
             while record.value:
                 file.write(q.get())
 
@@ -76,23 +77,22 @@ if __name__ == "__main__":
     i_mp = Value('i', i)
     record = Value('i', 0)
     play = Value('i', 0)
-    
+
     root = tk.Tk()
     text = tk.StringVar()
     label = tk.StringVar()
     text.set("{}".format(utts[i]))
     label.set("{}:".format(labels[i]))
-    
+
     p = Process(target=audio_process, args=(labels, play, record, i_mp))
     p.daemon = True
     p.start()
-    
-    
+
     def key(event):
         global i, play
         code = event.keysym
         i_mp.value = i
-        
+
         if code == 'space':
             # Record/stop recording - space
             if record.value == 0:
@@ -117,7 +117,7 @@ if __name__ == "__main__":
                 i -= 1
                 text.set("{}".format(utts[i]))
                 label.set("{}".format(labels[i]))
-        
+
         elif code == 'Down':
             # down
             if i == len(utts) - 1:
@@ -141,18 +141,19 @@ if __name__ == "__main__":
             # quit - q
             p.terminate()
             root.destroy()
-    
-    
+
     frame = tk.Frame(root, width=900, height=900)
     frame.bind("<Key>", key)
     frame.pack()
     frame.focus_set()
-    
-    ll = tk.Label(textvariable=label, fg="green", font=("Helvetica", 60), anchor="sw", justify="left")
-    # Make wraplength some function of window size and adjust placement accordingly in the future
-    l = tk.Label(textvariable=text, fg="green", font=("Helvetica", 60), anchor="center", justify="center",
-                 wraplength=700)
+
+    ll = tk.Label(textvariable=label, fg="green", font=("Helvetica", 60),
+                  anchor="sw", justify="left")
+    # Make wraplength some function of window size and adjust placement
+    # accordingly in the future
+    l = tk.Label(textvariable=text, fg="green", font=("Helvetica", 60),
+                 anchor="center", justify="center", wraplength=700)
     ll.place(y=0)
     l.place(rely=0.1, relx=0.2)
-    
+
     root.mainloop()
