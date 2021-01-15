@@ -24,8 +24,8 @@ print(sd.query_devices())
 # Fill in the device you want to use for input (and set the channel you want to
 # record over, in my case device 10 is an audio interface, and the microphone
 # is plugged into the first input (channel 1)) and output (used for playback)
-in_device = 8
-out_device = 3
+in_device = 0
+out_device = 2
 CHANNEL = 1
 fs = 44100
 sd.default.device = [in_device, out_device]

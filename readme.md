@@ -29,7 +29,8 @@ import sounddevice as sd
 print(sd.query_devices())
 ``` 
 
-The required `in_device` index is marked by `>` and `out_device` by `<`.
+The required `in_device` index is marked by `>` and `out_device` by `<`. If the same
+device handles both input and output, it will be marked with `*`.
 Modify the following lines in `rec.py` with the appropriate device indices, and
 set `CHANNEL` to record in mono (default) or stereo (`CHANNEL = [1|2]` respectively):
 ```python
