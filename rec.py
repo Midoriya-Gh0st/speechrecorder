@@ -9,10 +9,15 @@ from time import sleep
 import sounddevice as sd
 import soundfile as sf
 
+if len(sys.argv) != 2:
+    sys.exit("Usage: python rec.py utts.data")
+else:
+    _, utts = sys.argv
+
 path = Path("recordings")
 path.mkdir(exist_ok=True)
 
-with open("utts.data") as f:
+with open(utts) as f:
     script = [i.strip('( )"\n').split(' "') for i in f.readlines()]
 labels, utts = zip(*script)
 takes = defaultdict(int)
