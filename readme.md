@@ -6,20 +6,18 @@ This tool can be used to record a set of utterances provided in a script file, a
 This repo is intended to support students on the Speech Synthesis course at the University of Edinburgh as they work through [building a unit selection voice](http://speech.zone/exercises/build-a-unit-selection-voice/) from their own recordings.
 The original version of this tool was written by [Tim Loderhose](https://github.com/timlod/speechrecorder).
 
-
 ## Setup
 
 If you are using the SLP virtual machine, then you can try and make your audio devices (speaker/microphone) available in the VM, for example through [VirtualBox configuration](https://www.virtualbox.org/manual/UserManual.html#settings-audio).
 Otherwise, you may prefer to record data on your local machine and transfer the resulting audio files to another machine to work with Festival.
 
-
 ### Downloading SpeechRecorder
+
 To get the code for SpeechRecorder, you can either download and unzip this repository by clicking the green _Code > Download ZIP_ button above, or clone it directly using `git`:
 
 ```git clone https://github.com/dan-wells/speechrecorder```
 
 On Windows, you will probably need to install [Git for Windows](https://gitforwindows.org/) and then run the command above in a _Git Bash_ or _Git CMD_ terminal.
-
 
 ### Installing Python
 
@@ -100,7 +98,6 @@ In general, you might want to keep all your virtual environments in one place, o
 
 </details>
 
-
 ## Usage
 
 Run SpeechRecorder like `python rec.py utts.data` (possibly after activating your virtual environment).
@@ -114,7 +111,7 @@ The following commands are available:
 * `down` while recording to immediately record the next utterance (without stopping
   in between). 
   * *Warning:* This may lead to bad utterance segmentations (possibly due to timeouts
-  used in `multiprocessing.Process.join()`?)
+    used in `multiprocessing.Process.join()`?)
 * `p` to listen to the recorded audio (plays the latest take)
 * `q` to quit.
 
@@ -125,7 +122,6 @@ To record your own script, create a new file using the same format and pass it t
 
 You might want to split the provided `utts.data` into multiple files and use this method to record prompts in multiple sessions.
 This will help to overcome the limited interface provided by this version of SpeechRecorder, so that you don't have to scroll through the first 100 prompts to pick up where you left off!
-
 
 ### Audio device configuration
 
@@ -141,7 +137,7 @@ Run the following commands to list available audio devices in a Python interpret
 ```python
 import sounddevice as sd
 print(sd.query_devices())
-``` 
+```
 
 The required `in_device` index is marked by `>` and `out_device` by `<`.
 If the same device handles both input and output, it will be marked with `*`.
@@ -151,7 +147,8 @@ Modify the following lines in `rec.py` with the appropriate device indices:
 ```python
 in_device = 0
 out_device = 0
-``` 
+```
+
 By default, recorded audio will be sampled at 44.1 kHz.
 If you need higher/lower quality recordings, change the variable `fs` to the required sampling rate.
 
