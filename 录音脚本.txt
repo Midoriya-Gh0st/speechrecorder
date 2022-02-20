@@ -1,0 +1,78 @@
+[录音脚本] https://speech.zone/exercises/build-a-unit-selection-voice/the-recording-script/
+[添加自己的材料] https://speech.zone/exercises/build-a-unit-selection-voice/the-recording-script/adding-material/
+
+添加一些内容:
+[1: 5 个句子，在不同的上下文中包含您的名字]
+(1) I got the script from Yaoting;
+(2) Yaoting said he like to play Genshin Impact;
+(3) If you wang to talk with Yaoting, please book a teams meeting;
+(4) My name is Yaoting Wang;
+(5) Yaoting is majoring in speech and language processing;
+
+[2: 10 short frequently-used set-phrases such as “Hello.”, “Hi.”, “How are you?”, “Goodbye.” and so on;]
+(1) Hello;
+(2) Hi;
+(3) How are you?
+(4) Goodbye;
+(5) Good morning;
+(6) Good night;
+(7) Good afternoon;
+(8) What's up?
+(9) Oh my god;
+(10) let's go;
+
+[3: about 50 sentences aimed to cover a very small limited domain.]
+(1) Deep Learning is the fashion in recent Machine Learning research;
+(2) AI technology can assign the intelligence to machine;
+(3) AI technology can assign the intelligence to robot;
+(4) stochastic gradient decrease is an optimization algorithm;
+(5) stochastic gradient decrease can help to find the better parameters;
+(6) cross-entropy is commonly used as the loss function in the machine learning model;
+(7) NLP means natural language processing;
+(8) NLG means natural language generation;
+(9) NLU means natural language understand;
+(10) Knowledge Graph aims to explore the relationship between entities;
+
+(11) auto-drive is popular in industry research;
+(12) auto-drive should use computer vision model;
+(13) computer vision aims to simulate human visual system;
+(14) BERT model, showing amazing results in the top level test of machine reading comprehension SQuAD1.1
+(15) Pre-training a language model with a certain model seems to be a more reliable method
+(16) The BERT model is very deep and not wide
+(17) Usually, the transformer model has many parameters that need to be trained
+(18) If all the methods of human labeling are used to produce training data, the labor cost is too high
+(19) Can numerical vectors be used to express the semantics of natural language words?
+(20) How to find the appropriate numerical vector for each word
+
+(21) With such a large number of model parameters, a large amount of training corpus is necessary
+(22) Can the language generation model be directly transferred to other NLP problems?
+(23) There may be many models that can achieve the goal of language representation
+(24) The pretrained BERT representation can be fine-tuned with an additional output layer
+(25) demonstrate the importance of bidirectional pre-training for language representation
+(26) BERT refreshes performance records for 11 NLP tasks
+(27) Deep bidirectional models are more powerful than shallow connections of left-to-right models or left-to-right and right-to-left models
+(28) Standard conditional language models can only be trained left-to-right or right-to-left
+(29) Question Answering (QA) and Natural Language Inference (NLI) are both based on understanding the relationship between two sentences
+(30) To train a model that understands sentence relationships
+
+(31) BERT is a language representation model
+(32) Deep learning is representation learning
+(33) The researchers used human feedback reinforcement learning method
+(34) Generalization effect in wider population
+(35) Google’s BERT changes the natural language processing (NLP) landscape
+(36) BERT represents the bidirectional encoder of Transformers
+(37) Pre-training unlabeled text by union of left and right contexts to obtain deep bidirectional representations
+(38) BERT is based on Transformer architecture
+(39) One of the biggest challenges in natural language processing is the shortage of training data
+(40) We have Embedding, which can capture the context between words
+
+(41) These Embeddings are used to train models for downstream NLP tasks
+(42) A limitation of these embeddings is the use of very shallow language models
+(43) These models do not consider the context of words
+(44) GPT essentially replaces the lstm-based language modeling architecture with a transformation-based architecture
+(45) Train language models on large unlabeled text corpora (unsupervised or semi-supervised)
+(46) BERT can also use sentence pairs as input for tasks
+(47) Such a comprehensive Embedding scheme contains a lot of useful information for the model
+(48) Verifies the robustness and usefulness of the Transformer architecture
+(49) Bert is used to solve specific tasks
+(50) Combine transfer learning to realize the NLP task to be completed

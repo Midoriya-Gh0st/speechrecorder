@@ -8,6 +8,10 @@ from time import sleep
 
 import sounddevice as sd
 import soundfile as sf
+# import cffi
+# import
+
+# 使用指令: python rec.py utts.data
 
 if len(sys.argv) != 2:
     sys.exit("Usage: python rec.py utts.data")
@@ -31,7 +35,7 @@ out_device = 0
 sd.default.device = [in_device, out_device]
 
 CHANNEL = 1
-fs = 44100
+fs = 16000  # hz, = 44.1 kHz, need to be changed to 16kHz, = 16000
 sd.default.samplerate = fs
 
 
