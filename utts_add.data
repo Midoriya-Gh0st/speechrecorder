@@ -1,0 +1,65 @@
+( arctic_name01 "I got the script from Yaoting" )
+( arctic_name02 "Yaoting said he like to play Genshin Impact" )
+( arctic_name03 "If you wang to talk with Yaoting, please book a teams meeting" )
+( arctic_name04 "My name is Yaoting Wang" )
+( arctic_name05 "Yaoting is majoring in speech and language processing" )
+( arctic_short01 "Hello" )
+( arctic_short02 "How are you?" )
+( arctic_short03 "Goodbye" )
+( arctic_short04 "Good morning" )
+( arctic_short05 "Hi" )
+( arctic_short06 "Good night" )
+( arctic_short07 "Good afternoonc
+( arctic_short08 "What's up?" )
+( arctic_short09 "Oh my god" )
+( arctic_short10 "let's go" )
+( arctic_dom01 "Deep Learning is the fashion in recent Machine Learning research" )
+( arctic_dom02 "AI technology can assign the intelligence to machine" )
+( arctic_dom03 "AI technology can assign the intelligence to robot" )
+( arctic_dom04 "stochastic gradient decrease is an optimization algorithm" )
+( arctic_dom05 "stochastic gradient decrease can help to find the better parameters" )
+( arctic_dom06 "cross-entropy is commonly used as the loss function in the machine learning model" )
+( arctic_dom07 "NLP means natural language processing" )
+( arctic_dom08 "NLG means natural language generation" )
+( arctic_dom09 "NLU means natural language understand" )
+( arctic_dom10 "Knowledge Graph aims to explore the relationship between entities" )
+( arctic_dom11 "auto-drive is popular in industry research" )
+( arctic_dom12 "auto-drive should use computer vision model" )
+( arctic_dom13 "computer vision aims to simulate human visual system" )
+( arctic_dom14 "BERT model, showing amazing results in the top level test of machine reading comprehension SQuAD1.1
+( arctic_dom15 "Pre-training a language model with a certain model seems to be a more reliable method
+( arctic_dom16 "The BERT model is very deep and not wide
+( arctic_dom17 "Usually, the transformer model has many parameters that need to be trained
+( arctic_dom18 "If all the methods of human labeling are used to produce training data, the labor cost is too high
+( arctic_dom19 "Can numerical vectors be used to express the semantics of natural language words?
+( arctic_dom20 "How to find the appropriate numerical vector for each word
+( arctic_dom21 "With such a large number of model parameters, a large amount of training corpus is necessary
+( arctic_dom22 "Can the language generation model be directly transferred to other NLP problems?
+( arctic_dom23 "There may be many models that can achieve the goal of language representation
+( arctic_dom24 "The pretrained BERT representation can be fine-tuned with an additional output layer
+( arctic_dom25 "demonstrate the importance of bidirectional pre-training for language representation
+( arctic_dom26 "BERT refreshes performance records for 11 NLP tasks
+( arctic_dom27 "Deep bidirectional models are more powerful than shallow connections of left-to-right models or left-to-right and right-to-left models
+( arctic_dom28 "Standard conditional language models can only be trained left-to-right or right-to-left
+( arctic_dom29 "Question Answering and Natural Language Inference are both based on understanding the relationship between two sentences
+( arctic_dom30 "To train a model that understands sentence relationships
+( arctic_dom31 "BERT is a language representation model
+( arctic_dom32 "Deep learning is representation learning
+( arctic_dom33 "The researchers used human feedback reinforcement learning method
+( arctic_dom34 "Generalization effect in wider population
+( arctic_dom35 "Google's BERT changes the natural language processing (NLP) landscape
+( arctic_dom36 "BERT represents the bidirectional encoder of Transformers
+( arctic_dom37 "Pre-training unlabeled text by union of left and right contexts to obtain deep bidirectional representations
+( arctic_dom38 "BERT is based on Transformer architecture
+( arctic_dom39 "One of the biggest challenges in natural language processing is the shortage of training data
+( arctic_dom40 "We have Embedding, which can capture the context between words
+( arctic_dom41 "These Embeddings are used to train models for downstream NLP tasks
+( arctic_dom42 "A limitation of these embeddings is the use of very shallow language models
+( arctic_dom43 "These models do not consider the context of words
+( arctic_dom44 "GPT essentially replaces the lstm-based language modeling architecture with a transformation-based architecture
+( arctic_dom45 "Train language models on large unlabeled text corpora (unsupervised or semi-supervised)
+( arctic_dom46 "BERT can also use sentence pairs as input for tasks
+( arctic_dom47 "Such a comprehensive Embedding scheme contains a lot of useful information for the model
+( arctic_dom48 "Verifies the robustness and usefulness of the Transformer architecture
+( arctic_dom49 "Bert is used to solve specific tasks
+( arctic_dom50 "Combine transfer learning to realize the NLP task to be completed
